@@ -1,0 +1,20 @@
+[package]
+name = "identity-registry"
+version = "1.0.0"
+description = "$DRONEOS Identity Registry - 403 Robot Identity System"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "identity_registry"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
