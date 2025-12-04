@@ -1,0 +1,20 @@
+[package]
+name = "droneos-token"
+version = "1.0.0"
+description = "$DRONEOS Token - Staking and Rewards"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "droneos_token"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
