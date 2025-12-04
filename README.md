@@ -1,4 +1,4 @@
-# $DRONEOS Protocol v3.0 — Swarm Intelligence
+# $DRONEOS Protocol v4.0 — Oracle Integration & Verification
 
 **DroneOS: Autonomous Robot Leasing Protocol on Solana**
 
@@ -231,12 +231,142 @@ The core innovation — **real-time micropayments**:
 |---------|------|----------|
 | **v1.0** | Core Foundation | ✅ Identity, Payments, Market, Token |
 | **v2.0** | Web Interface | ✅ Landing Page, Dashboard, Analytics |
-| **v3.0** | Swarm Intelligence | ✅ Multi-Robot Coordination, Group Tasks, Collective Bidding |
-| v4.0 | Oracle Integration | GPS verification, proof of completion |
+| **v3.0** | Swarm Intelligence | ✅ Multi-Robot Coordination, Group Tasks |
+| **v4.0** | Oracle Integration | ✅ GPS Verification, Proof of Completion, Disputes |
 
 ---
 
-## 🤖 Swarm Coordinator (v3.0 New!)
+## 🔮 Oracle Verifier (v4.0 New!)
+
+### Decentralized Verification System
+Trust-minimized verification infrastructure for robot task completion:
+
+**Verification Types:**
+- **GPS Location Proof**: Chainlink/Pyth oracle verification of coordinates
+- **Completion Proof**: Cryptographic photo/sensor data validation
+- **IoT Sensor Data**: Real-time telemetry verification
+- **Dispute Resolution**: Community-driven challenge system
+
+### How It Works
+
+**1. Register Oracle Provider**
+```typescript
+const oracle = await droneos.oracle.registerOracle({
+  type: 'GPS',
+  endpoint: 'https://chainlink-gps-adapter.com',
+  reputation: 95,
+  provider: providerKeypair
+});
+```
+
+**2. Submit GPS Proof During Task**
+```typescript
+await droneos.oracle.submitGPSProof(task.publicKey, {
+  latitude: 40_756_0800, // 40.7568° N (fixed point)
+  longitude: -73_986_4400, // -73.9864° W
+  altitude: 45, // meters
+  timestamp: Date.now(),
+  signature: robotSignature, // Ed25519 from robot
+  robot: robotKeypair,
+  oracle: oracleKeypair
+});
+```
+
+**3. Submit Completion Proof**
+```typescript
+await droneos.oracle.submitCompletionProof(task.publicKey, {
+  dataHash: sha256(photoData),
+  proofUrl: 'ipfs://QmXx...', // Photo on IPFS
+  metadata: JSON.stringify({
+    cameraModel: 'DJI Mavic 3',
+    timestamp: Date.now(),
+    gpsCoords: [40.7568, -73.9864]
+  }),
+  robot: robotKeypair
+});
+```
+
+**4. Oracle Verifies Proof**
+```typescript
+// Chainlink node calls this
+await droneos.oracle.verifyProof(proof.publicKey, {
+  confidenceScore: 95, // 95% confidence
+  isValid: true,
+  verificationData: JSON.stringify({
+    matchScore: 0.95,
+    method: 'GPS triangulation + visual recognition'
+  }),
+  oracleAuthority: nodeKeypair
+});
+```
+
+**5. Dispute if Suspicious**
+```typescript
+await droneos.oracle.createDispute(proof.publicKey, {
+  reason: 'Photo timestamp doesn\'t match GPS timestamp',
+  evidenceUrl: 'ipfs://QmYy...',
+  challenger: challengerKeypair
+});
+
+// Community votes (weighted by staked DRONEOS)
+await droneos.oracle.voteOnDispute(dispute.publicKey, {
+  voteForChallenger: true, // or false
+  voter: voterKeypair
+});
+```
+
+### Features
+
+**Multi-Oracle Support:**
+- Chainlink GPS feeds
+- Pyth Network price/data feeds
+- Custom oracle integrations
+- Reputation-weighted consensus
+
+**Cryptographic Proofs:**
+- Ed25519 signatures from robots
+- SHA256 hashes for data integrity
+- IPFS/Arweave for permanent storage
+- Timestamp verification
+
+**Dispute System:**
+- 7-day voting period
+- Stake-weighted voting
+- Automatic resolution
+- Slashing for false reports
+
+**Confidence Scoring:**
+- Minimum 80% confidence required
+- Multiple oracle validation
+- Historical accuracy tracking
+- Oracle reputation system
+
+### Benefits
+
+**For Task Creators:**
+- ✅ Verifiable proof of completion
+- ✅ Reduced fraud
+- ✅ Automated verification
+- ✅ Dispute resolution
+
+**For Robot Operators:**
+- ✅ Protect reputation
+- ✅ Provable work completion
+- ✅ Fair dispute process
+- ✅ Increased trust
+
+**For Oracles:**
+- ✅ Earn verification fees
+- ✅ Build reputation
+- ✅ Decentralized infrastructure
+- ✅ Quality scoring
+
+### Program ID
+`DOS4orc1111111111111111111111111111111111111`
+
+---
+
+## 🤖 Swarm Coordinator (v3.0)
 
 ### Multi-Robot Coordination
 Revolutionary swarm intelligence system enabling robots to work together:

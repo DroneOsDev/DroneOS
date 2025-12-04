@@ -1,0 +1,22 @@
+[package]
+name = "oracle-verifier"
+version = "4.0.0"
+description = "$DRONEOS Oracle Verifier - GPS & IoT Data Verification"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "oracle_verifier"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+task-market = { path = "../task-market", features = ["cpi"] }
+identity-registry = { path = "../identity-registry", features = ["cpi"] }
