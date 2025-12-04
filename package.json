@@ -1,0 +1,37 @@
+{
+  "name": "droneos-protocol",
+  "version": "1.0.0",
+  "description": "$DRONEOS Protocol - Autonomous Robot Leasing on Solana",
+  "scripts": {
+    "build:programs": "anchor build",
+    "build:sdk": "cd sdk && npm run build",
+    "build": "npm run build:programs && npm run build:sdk",
+    "test": "anchor test",
+    "deploy:devnet": "anchor deploy --provider.cluster devnet",
+    "deploy:mainnet": "anchor deploy --provider.cluster mainnet",
+    "idl:generate": "anchor idl init --filepath target/idl/*.json",
+    "clean": "rm -rf target node_modules sdk/node_modules"
+  },
+  "keywords": [
+    "solana",
+    "depin",
+    "robotics",
+    "leasing",
+    "micropayments",
+    "x402",
+    "autonomous",
+    "droneos"
+  ],
+  "author": "$DRONEOS Protocol",
+  "license": "MIT",
+  "devDependencies": {
+    "@coral-xyz/anchor": "^0.30.1",
+    "@solana/web3.js": "^1.91.0",
+    "@types/chai": "^4.3.0",
+    "@types/mocha": "^10.0.0",
+    "chai": "^4.3.0",
+    "mocha": "^10.0.0",
+    "ts-mocha": "^10.0.0",
+    "typescript": "^5.4.0"
+  }
+}

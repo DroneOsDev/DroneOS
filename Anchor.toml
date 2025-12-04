@@ -1,0 +1,26 @@
+[features]
+seeds = false
+skip-lint = false
+
+[programs.localnet]
+identity_registry = "DOS4id11111111111111111111111111111111111111"
+payment_streams = "DOS4pay1111111111111111111111111111111111111"
+task_market = "DOS4mkt1111111111111111111111111111111111111"
+droneos_token = "DOS4tkn1111111111111111111111111111111111111"
+
+[programs.devnet]
+identity_registry = "DOS4id11111111111111111111111111111111111111"
+payment_streams = "DOS4pay1111111111111111111111111111111111111"
+task_market = "DOS4mkt1111111111111111111111111111111111111"
+droneos_token = "DOS4tkn1111111111111111111111111111111111111"
+
+[registry]
+url = "https://api.apr.dev"
+
+[provider]
+cluster = "devnet"
+wallet = "~/.config/solana/id.json"
+
+[scripts]
+test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+deploy = "anchor deploy"
