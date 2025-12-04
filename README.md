@@ -1,4 +1,4 @@
-# $DRONEOS Protocol v1.0 — Core Foundation
+# $DRONEOS Protocol v2.0 — Web Interface & Dashboard
 
 **DroneOS: Autonomous Robot Leasing Protocol on Solana**
 
@@ -230,9 +230,42 @@ The core innovation — **real-time micropayments**:
 | Version | Name | Features |
 |---------|------|----------|
 | **v1.0** | Core Foundation | ✅ Identity, Payments, Market, Token |
-| v2.0 | Swarm Intelligence | Multi-robot coordination, collective bidding |
-| v3.0 | Autonomous Markets | Dynamic pricing, dispute resolution |
-| v4.0 | Fleet Sovereignty | DAO governance, cross-chain, insurance |
+| **v2.0** | Web Interface | ✅ Landing Page, Dashboard, Analytics |
+| v3.0 | Swarm Intelligence | Multi-robot coordination, collective bidding |
+| v4.0 | Oracle Integration | GPS verification, proof of completion |
+
+---
+
+## 🌐 Web Interface (v2.0 New!)
+
+### Landing Page
+Professional cyberpunk-themed landing with:
+- Particle effects and smooth animations
+- Protocol features showcase
+- Real-time network statistics
+- Wallet connection integration
+
+### Operator Dashboard
+Complete control panel for robot operators:
+- **Fleet Management**: Register and monitor robots
+- **Task Marketplace**: Browse, filter, and bid on tasks
+- **Live Analytics**: Earnings, reputation, payment streams
+- **Activity Feed**: Real-time updates on your operations
+- **Quick Actions**: One-click task acceptance and rewards claiming
+
+### Getting Started
+```bash
+cd app
+npm install
+npm run dev  # Launch at http://localhost:3000
+```
+
+**Tech Stack:**
+- Next.js 14 + TypeScript
+- Solana Wallet Adapter (Phantom, Solflare)
+- Framer Motion for smooth animations
+- Recharts for data visualization
+- Tailwind CSS with custom cyberpunk theme
 
 ---
 
