@@ -1,0 +1,22 @@
+[package]
+name = "task-market"
+version = "1.0.0"
+description = "$DRONEOS Task Market - On-chain Robot Labor Marketplace"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "task_market"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+identity-registry = { path = "../identity-registry", features = ["cpi"] }
+payment-streams = { path = "../payment-streams", features = ["cpi"] }
