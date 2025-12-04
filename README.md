@@ -1,4 +1,4 @@
-# $DRONEOS Protocol v2.0 — Web Interface & Dashboard
+# $DRONEOS Protocol v3.0 — Swarm Intelligence
 
 **DroneOS: Autonomous Robot Leasing Protocol on Solana**
 
@@ -231,12 +231,93 @@ The core innovation — **real-time micropayments**:
 |---------|------|----------|
 | **v1.0** | Core Foundation | ✅ Identity, Payments, Market, Token |
 | **v2.0** | Web Interface | ✅ Landing Page, Dashboard, Analytics |
-| v3.0 | Swarm Intelligence | Multi-robot coordination, collective bidding |
+| **v3.0** | Swarm Intelligence | ✅ Multi-Robot Coordination, Group Tasks, Collective Bidding |
 | v4.0 | Oracle Integration | GPS verification, proof of completion |
 
 ---
 
-## 🌐 Web Interface (v2.0 New!)
+## 🤖 Swarm Coordinator (v3.0 New!)
+
+### Multi-Robot Coordination
+Revolutionary swarm intelligence system enabling robots to work together:
+
+**Key Features:**
+- **Swarm Formation**: Create groups of 2-20 robots with reputation requirements
+- **Group Tasks**: Multi-robot tasks with coordinated execution
+- **Collective Bidding**: Swarms bid as a unit for better rates
+- **Performance Tracking**: Contribution-based reward distribution
+- **Dynamic Coordination**: Real-time task synchronization
+
+### How It Works
+
+**1. Create a Swarm**
+```typescript
+const swarm = await droneos.swarm.createSwarm({
+  name: "Delivery Fleet Alpha",
+  maxRobots: 5,
+  minReputation: 85,
+  leader: operatorKeypair
+});
+```
+
+**2. Robots Join Swarm**
+```typescript
+await droneos.swarm.joinSwarm(swarm.publicKey, {
+  robot: robotKeypair,
+  operator: operatorKeypair
+});
+```
+
+**3. Create Group Task**
+```typescript
+const groupTask = await droneos.swarm.createGroupTask({
+  title: "Warehouse inventory scan",
+  requiredRobots: 4,
+  totalReward: 200_000_000, // 200 DRONEOS
+  duration: 7200, // 2 hours
+  creator: clientKeypair
+});
+```
+
+**4. Swarm Bids Collectively**
+```typescript
+await droneos.swarm.submitSwarmBid(groupTask.publicKey, {
+  swarm: swarm.publicKey,
+  proposedRate: 11000, // Better rate than individual
+  estimatedDuration: 6000, // 1.67 hours
+  leader: leaderKeypair
+});
+```
+
+**5. Rewards Distributed by Contribution**
+```typescript
+// Automatic distribution based on performance:
+// Robot A: 105% contribution → 52.5 DRONEOS
+// Robot B: 100% contribution → 50 DRONEOS  
+// Robot C: 95% contribution → 47.5 DRONEOS
+// Robot D: 100% contribution → 50 DRONEOS
+```
+
+### Benefits
+
+**For Clients:**
+- ✅ More reliable task completion
+- ✅ Better pricing through collective bidding
+- ✅ Faster execution with parallelization
+- ✅ Built-in redundancy
+
+**For Operators:**
+- ✅ Access to high-value group tasks
+- ✅ Reputation pooling
+- ✅ Shared risk
+- ✅ Performance-based bonuses
+
+### Program ID
+`DOS4swm1111111111111111111111111111111111111`
+
+---
+
+## 🌐 Web Interface (v2.0)
 
 ### Landing Page
 Professional cyberpunk-themed landing with:

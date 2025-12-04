@@ -1,0 +1,23 @@
+[package]
+name = "swarm-coordinator"
+version = "3.0.0"
+description = "$DRONEOS Swarm Coordinator - Multi-Robot Task Coordination"
+edition = "2021"
+
+[lib]
+crate-type = ["cdylib", "lib"]
+name = "swarm_coordinator"
+
+[features]
+no-entrypoint = []
+no-idl = []
+no-log-ix-name = []
+cpi = ["no-entrypoint"]
+default = []
+
+[dependencies]
+anchor-lang = { workspace = true }
+anchor-spl = { workspace = true }
+identity-registry = { path = "../identity-registry", features = ["cpi"] }
+task-market = { path = "../task-market", features = ["cpi"] }
+payment-streams = { path = "../payment-streams", features = ["cpi"] }
